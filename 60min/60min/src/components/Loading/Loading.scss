@@ -1,0 +1,12 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    enable-background: new 0 0 50 50;
+  }
+  svg path,
+  svg rect {
+    fill: #5997ab;
+  }
+}

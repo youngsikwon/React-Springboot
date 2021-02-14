@@ -1,0 +1,21 @@
+.contact-wrapper {
+  height: 100vh;
+  min-height: 550px;
+  display: flex;
+  background-color: rgba(129, 188, 95, 0.2);
+  .contact-section {
+    display: flex;
+    margin: 4.5em auto;
+    width: 84%;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.mobile {
+  .contact-section {
+    flex-direction: column;
+  }
+}

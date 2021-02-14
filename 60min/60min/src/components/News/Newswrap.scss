@@ -1,0 +1,19 @@
+.news-wrapper {
+  display: flex;
+  background-color: white;
+  height: 100vh;
+  min-height: 550px;
+  .news-section {
+    margin: 4.5em auto;
+    width: 85%;
+    display: flex;
+  }
+}
+
+.tablet,
+.mobile {
+  .news-section {
+    flex-direction: column;
+    gap: 1.2em;
+  }
+}

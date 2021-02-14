@@ -1,0 +1,110 @@
+.contact-left {
+  padding: 20px 25px;
+  .contact-title {
+    font-weight: 700;
+  }
+  .link-container {
+    margin-top: 0.5em;
+    margin-left: 0.3em;
+    .email-wrapper {
+      position: relative;
+      display: inline-flex;
+      .tooltip {
+        visibility: hidden;
+        font-weight: 500;
+        width: 50px;
+        background-color: rgb(194, 194, 194);
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 3px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 115%;
+        left: 130px;
+        margin-left: -60px;
+        opacity: 0;
+        transition: all 0.1s;
+        &::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: rgb(194, 194, 194) transparent transparent transparent;
+        }
+      }
+    }
+    > div {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      margin-bottom: 2px;
+      svg {
+        cursor: pointer;
+        color: black;
+        font-size: 1.2em;
+      }
+      > span {
+        cursor: pointer;
+        font-weight: 300;
+        font-size: 0.9em;
+        > a {
+          color: black;
+          transition: 0.1 color ease-in;
+          &:hover {
+            color: #77b953;
+          }
+        }
+        &:hover {
+          color: #77b953;
+        }
+      }
+    }
+  }
+}
+
+.pc,
+.tablet {
+  .contact-left {
+    flex: 0.8;
+    .contact-title {
+      font-size: 2.3em;
+    }
+  }
+}
+
+.mobile {
+  .contact-left {
+    display: flex;
+    justify-content: space-between;
+    .contact-title {
+      font-size: 2.2em;
+    }
+    .link-container {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      .email-wrapper {
+        .tooltip {
+          left: 53px;
+        }
+      }
+      > div {
+        margin-bottom: 0;
+        svg {
+          font-size: 1.6em;
+          margin-left: 0.3em;
+          &:hover {
+            color: #77b953;
+          }
+        }
+        > span:not(:nth-child(3)) {
+          display: none;
+        }
+      }
+    }
+  }
+}
