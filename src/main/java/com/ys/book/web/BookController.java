@@ -18,27 +18,32 @@ public class BookController {
 
 
 
-    @PostMapping("/book")
-    public ResponseEntity<?> save(@RequestBody Book book){
-
-    return new ResponseEntity<>(bookService.저장하기(book), HttpStatus.OK);
+    @PostMapping("book")
+    public Book save(@RequestBody Book book){
+        return bookService.저장하기(book );
     }
 
 
     @GetMapping("/book")
     public ResponseEntity<?> findaAll(){
-        return new ResponseEntity<>(bookService.모두가져오기(), HttpStatus.OK);
+        return
+                new ResponseEntity<>(bookService.모두가져오기(), HttpStatus.OK);
     }
 
     @GetMapping("/book/{id}")
-    public ResponseEntity<?>findById(@PathVariable Long id){
-        return new ResponseEntity<>(bookService.한건가져오기(id), HttpStatus.OK);
+    public ResponseEntity<?> findById(@PathVariable Long id ){
+        return
+                new ResponseEntity<>(bookService.한건가져오기(id), HttpStatus.OK);
     }
+
 
     @PutMapping("/book/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Book book){
-        return new ResponseEntity<>(bookService.한건가져오기(id, book), HttpStatus.OK);
+        return
+                new ResponseEntity<>(bookService.수정(id, book), HttpStatus.OK);
     }
+
+
     @DeleteMapping("/book{id}")
     public ResponseEntity<?> deleteById(@PathVariable Long id){
         return new ResponseEntity<>(bookService.삭제하기(id), HttpStatus.OK);
