@@ -1,13 +1,22 @@
 package com.ys.book.web;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import com.ys.book.domain.Book;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
-
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 /**
  * 통합테스트 (모든 Bean들을 똑겉이 IOC 올리고 테스트함.
  * SpringBootTest.WebEnvironment.MOCK --> 실제 톰캣이 아닌, 가상 톰캣으로 테스트 함.
@@ -30,10 +39,23 @@ public class  BookControllerIntegreTest {
     private MockMvc mockMvc;
 
     @Test
-    public void save_테스트(){
-        log.info("save 테스트 시작 ======");
+    public void save_테스트() throws Exception {
+        Book book = new Book(null, "감자", "영식");
+        String content = new ObjectMapper().writeValueAsString(book);
+
+
+        // when (테스트 실행)
+        ResultActions resultAction = mockMvc.perform(post("/")
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content(content)
+                .accept(MediaType.APPLICATION_JSON_UTF8));
+
+
+        // then (검증)
+        resultAction.andExpect(status()
+                .isCreated())
+                .andExpect(jsonPath("$.titile")
+                .value("스프링"))
+                .andDo(MoclMvcR)
     }
-
-
-
 }
