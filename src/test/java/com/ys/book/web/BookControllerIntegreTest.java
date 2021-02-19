@@ -40,6 +40,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = WebEnvironment.MOCK) // 실제 톰켓을 올리는게 아니라, 다른 톰켓으로 테스트
 public class BookControllerIntegreTest {
 
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -128,7 +129,8 @@ public class BookControllerIntegreTest {
                 .content(content).accept(MediaType.APPLICATION_JSON_UTF8));
 
         // then
-        resultAction.andExpect(status().isOk()).andExpect(jsonPath("$.id").value(3L))
+        resultAction.andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(3L))
                 .andExpect(jsonPath("$.title").value("C++ 따라하기")).andDo(MockMvcResultHandlers.print());
     }
 }
