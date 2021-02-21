@@ -19,13 +19,13 @@ public class BookController {
 
 
     @PostMapping("book")
-    public Book save(@RequestBody Book book){
-        return bookService.저장하기(book );
+    public ResponseEntity<?> save(@RequestBody Book book){
+        return new ResponseEntity<>( bookService.저장하기(book), HttpStatus.CREATED);
     }
 
-
+    @CrossOrigin // 외부로부터 들어온 자바스크립트를 허용해줌.
     @GetMapping("/book")
-    public ResponseEntity<?> findaAll(){
+    public  ResponseEntity<?> findaAll(){
         return
                 new ResponseEntity<>(bookService.모두가져오기(), HttpStatus.OK);
     }
