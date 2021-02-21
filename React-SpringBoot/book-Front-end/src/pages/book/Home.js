@@ -24,4 +24,3 @@ const Home = () => {
 
 export default Home;
 <h1>책 리스트 보기</h1>;
-q;
