@@ -1,8 +1,3 @@
-import React from 'react';
-import Header from './components/Header/Header';
-import './reset.css';
-import Section from './components/Section';
-import Footer from './components/Footer/Footer';
 import './App.scss';
 
 class App extends React.Component {
